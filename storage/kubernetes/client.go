@@ -26,9 +26,9 @@ import (
 	"github.com/gtank/cryptopasta"
 	"golang.org/x/net/http2"
 
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/storage/kubernetes/k8sapi"
+	"github.com/datamachines/dex/pkg/log"
+	"github.com/datamachines/dex/storage"
+	"github.com/datamachines/dex/storage/kubernetes/k8sapi"
 )
 
 type client struct {

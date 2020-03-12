@@ -16,8 +16,8 @@ import (
 	"github.com/lib/pq"
 	sqlite3 "github.com/mattn/go-sqlite3"
 
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/storage"
+	"github.com/datamachines/dex/pkg/log"
+	"github.com/datamachines/dex/storage"
 )
 
 const (
@@ -309,7 +309,7 @@ func (s *MySQL) open(logger log.Logger) (*conn, error) {
 	}
 
 	if s.MaxIdleConns == 0 {
-		/*Override default behaviour to fix https://github.com/dexidp/dex/issues/1608*/
+		/*Override default behaviour to fix https://github.com/datamachines/dex/issues/1608*/
 		db.SetMaxIdleConns(0)
 	} else {
 		db.SetMaxIdleConns(s.MaxIdleConns)

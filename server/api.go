@@ -7,11 +7,11 @@ import (
 
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/dexidp/dex/api"
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/server/internal"
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/version"
+	"github.com/datamachines/dex/api"
+	"github.com/datamachines/dex/pkg/log"
+	"github.com/datamachines/dex/server/internal"
+	"github.com/datamachines/dex/storage"
+	"github.com/datamachines/dex/version"
 )
 
 // apiVersion increases every time a new call is added to the API. Clients should use this info
@@ -74,6 +74,27 @@ func (d dexAPI) CreateClient(ctx context.Context, req *api.CreateClientReq) (*ap
 	return &api.CreateClientResp{
 		Client: req.Client,
 	}, nil
+}
+
+// ListClients implements the corresponding gRPC endpoint, returning a list of ClientID
+// protos in the response.
+func (d dexAPI) ListClients(ctx context.Context, req *api.ListClientsReq) (*api.ListClientsResp, error) {
+	clients, err := d.s.ListClients()
+	if err != nil {
+		return nil, fmt.Errorf("list clients: %v", err)
+	}
+
+	resp := new(api.ListClientsResp)
+	for _, c := range clients {
+		resp.Clients = append(resp.Clients, &api.ClientID{
+			Id:      c.ID,
+			Name:    c.Name,
+			Public:  c.Public,
+			LogoUrl: c.LogoURL,
+		})
+	}
+
+	return resp, nil
 }
 
 func (d dexAPI) UpdateClient(ctx context.Context, req *api.UpdateClientReq) (*api.UpdateClientResp, error) {

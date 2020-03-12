@@ -1,4 +1,4 @@
-module github.com/dexidp/dex
+module github.com/datamachines/dex
 
 require (
 	github.com/Microsoft/hcsshim v0.8.7 // indirect

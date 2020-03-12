@@ -9,7 +9,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/dexidp/dex/storage"
+	"github.com/datamachines/dex/storage"
 )
 
 func TestHandleHealth(t *testing.T) {
