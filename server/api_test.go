@@ -10,11 +10,11 @@ import (
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 
-	"github.com/dexidp/dex/api"
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/server/internal"
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/storage/memory"
+	"github.com/datamachines/dex/api"
+	"github.com/datamachines/dex/pkg/log"
+	"github.com/datamachines/dex/server/internal"
+	"github.com/datamachines/dex/storage"
+	"github.com/datamachines/dex/storage/memory"
 )
 
 // apiClient is a test gRPC client. When constructed, it runs a server in
@@ -326,7 +326,7 @@ func TestRefreshToken(t *testing.T) {
 
 	// Try to delete again.
 	//
-	// See https://github.com/dexidp/dex/issues/1055
+	// See https://github.com/datamachines/dex/issues/1055
 	resp, err = client.RevokeRefresh(ctx, &revokeReq)
 	if err != nil {
 		t.Fatalf("Unable to revoke refresh tokens for user: %v", err)

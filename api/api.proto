@@ -14,6 +14,23 @@ message Client {
   string logo_url = 7;
 }
 
+// ClientID represents minimal information about a client, e.g., for listing.
+message ClientID {
+  string id = 1;
+  bool public = 2;
+  string name = 3;
+  string logo_url = 4;
+}
+
+// ListClientsReq asks to list clients.
+message ListClientsReq {
+}
+
+// ListClientsResp contains a list of ClientID.
+message ListClientsResp {
+  repeated ClientID clients = 1;
+}
+
 // CreateClientReq is a request to make a client.
 message CreateClientReq {
   Client client = 1;
@@ -22,7 +39,7 @@ message CreateClientReq {
 // CreateClientResp returns the response from creating a client.
 message CreateClientResp {
   bool already_exists = 1;
-  Client client = 2; 
+  Client client = 2;
 }
 
 // DeleteClientReq is a request to delete a client.
@@ -31,7 +48,7 @@ message DeleteClientReq {
   string id = 1;
 }
 
-// DeleteClientResp determines if the client is deleted successfully. 
+// DeleteClientResp determines if the client is deleted successfully.
 message DeleteClientResp {
   bool not_found = 1;
 }
@@ -80,7 +97,7 @@ message UpdatePasswordReq {
   string new_username = 3;
 }
 
-// UpdatePasswordResp returns the response from modifying an existing password. 
+// UpdatePasswordResp returns the response from modifying an existing password.
 message UpdatePasswordResp {
   bool not_found = 1;
 }
@@ -90,7 +107,7 @@ message DeletePasswordReq {
   string email = 1;
 }
 
-// DeletePasswordResp returns the response from deleting a password. 
+// DeletePasswordResp returns the response from deleting a password.
 message DeletePasswordResp {
   bool not_found = 1;
 }
@@ -142,7 +159,7 @@ message RevokeRefreshReq {
   string client_id = 2;
 }
 
-// RevokeRefreshResp determines if the refresh token is revoked successfully. 
+// RevokeRefreshResp determines if the refresh token is revoked successfully.
 message RevokeRefreshResp {
   // Set to true is refresh token was not found and token could not be revoked.
   bool not_found = 1;
@@ -160,6 +177,7 @@ message VerifyPasswordResp {
 
 // Dex represents the dex gRPC service.
 service Dex {
+  rpc ListClients(ListClientsReq) returns (ListClientsResp) {};
   // CreateClient creates a client.
   rpc CreateClient(CreateClientReq) returns (CreateClientResp) {};
   // UpdateClient updates an existing client

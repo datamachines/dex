@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/storage/kubernetes/k8sapi"
+	"github.com/datamachines/dex/pkg/log"
+	"github.com/datamachines/dex/storage"
+	"github.com/datamachines/dex/storage/kubernetes/k8sapi"
 )
 
 const (
