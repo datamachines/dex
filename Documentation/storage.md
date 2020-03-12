@@ -118,10 +118,10 @@ subjects:
 ### Removed: Kubernetes third party resources(TPRs)
 
 TPR support in dex has been removed.  The last version to support TPR
-is [v2.17.0](https://github.com/dexidp/dex/tree/v2.17.0)
+is [v2.17.0](https://github.com/datamachines/dex/tree/v2.17.0)
 
-If you are currently running dex using TPRs, you will need to [migrate to CRDs](https://github.com/dexidp/dex/blob/v2.17.0/Documentation/storage.md#migrating-from-tprs-to-crds)
-before you upgrade to a post v2.17 dex.  The script mentioned in the instructions can be [found here](https://github.com/dexidp/dex/blob/v2.17.0/scripts/dump-tprs)
+If you are currently running dex using TPRs, you will need to [migrate to CRDs](https://github.com/datamachines/dex/blob/v2.17.0/Documentation/storage.md#migrating-from-tprs-to-crds)
+before you upgrade to a post v2.17 dex.  The script mentioned in the instructions can be [found here](https://github.com/datamachines/dex/blob/v2.17.0/scripts/dump-tprs)
 
 
 ### Configuration
@@ -226,8 +226,8 @@ Each storage implementation bears a large ongoing maintenance cost and needs to 
 
 Those who still want to construct a proposal for a new storage should review the following packages:
 
-* `github.com/dexidp/dex/storage`: Interface definitions which the storage must implement. __NOTE:__ This package is not stable.
-* `github.com/dexidp/dex/storage/conformance`: Conformance tests which storage implementations must pass.
+* `github.com/datamachines/dex/storage`: Interface definitions which the storage must implement. __NOTE:__ This package is not stable.
+* `github.com/datamachines/dex/storage/conformance`: Conformance tests which storage implementations must pass.
 
 ### New storage option requirements
 
@@ -237,7 +237,7 @@ Any proposal to add a new implementation must address the following:
 * Transactional requirements: atomic deletes, updates, etc.
 * Is there an established and reasonable Go client?
 
-[issues-transaction-tests]: https://github.com/dexidp/dex/issues/600
+[issues-transaction-tests]: https://github.com/datamachines/dex/issues/600
 [k8s-api]: https://github.com/kubernetes/kubernetes/blob/master/docs/devel/api-conventions.md#concurrency-control-and-consistency
 [psql-conn-options]: https://godoc.org/github.com/lib/pq#hdr-Connection_String_Parameters
 [mysql-conn-options]: https://github.com/go-sql-driver/mysql#tls
